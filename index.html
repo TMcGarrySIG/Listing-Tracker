@@ -1,100 +1,127 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2487.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px}
-    span.s1 {font-kerning: none}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deal Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;Deal Dashboard&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" href="styles.css"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;header&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h1&gt;Deal Dashboard&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;main&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;table id="dealDashboard" class="display"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;thead&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;tr&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;th&gt;Rollout Order&lt;/th&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;th&gt;Store #&lt;/th&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;th&gt;Property Name&lt;/th&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;th&gt;Location&lt;/th&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;th&gt;OMs&lt;/th&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;th&gt;Description / Tenant&lt;/th&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;th&gt;Status&lt;/th&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;th&gt;Date to Market&lt;/th&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;th&gt;Listing Cap&lt;/th&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;th&gt;Listing Price&lt;/th&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;th&gt;Earnest Money&lt;/th&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;th&gt;DD Period&lt;/th&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;th&gt;Closing Period&lt;/th&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;th&gt;Buyer Name&lt;/th&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/tr&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/thead&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;tbody&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;!-- Data will be populated here dynamically --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/tbody&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/table&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/main&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;footer&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;&amp;copy; 2025 Sands Investment Group. All Rights Reserved.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>$(document).ready(function() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// Example data - this will eventually be dynamic</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const data = [</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>[1, "7972", "Kwik Kar - Jefferson City (Truman)", "Jefferson City, MO", "OM - Truman", "Oil Changers/Wash Shop", "Off-Market", "2024-12-05", "0.065", "1810261.538", "50000", "30 days", "30 days", "Clover 2 LLC"],</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>[2, "7973", "Kwik Kar - Edgewood", "Jefferson City, MO", "OM - Edgewood", "Oil Changers/Wash Shop", "On-Market", "2024-11-01", "0.070", "2000000", "60000", "30 days", "45 days", "Clover 3 LLC"]</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>];</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>$('#dealDashboard').DataTable({</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>data: data,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>columns: [</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ title: "Rollout Order" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ title: "Store #" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ title: "Property Name" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ title: "Location" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ title: "OMs" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ title: "Description / Tenant" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ title: "Status" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ title: "Date to Market" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ title: "Listing Cap" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ title: "Listing Price" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ title: "Earnest Money" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ title: "DD Period" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ title: "Closing Period" },</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ title: "Buyer Name" }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+    <header>
+        <div class="container">
+            <h1>Deal Dashboard</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <table id="dealDashboard" class="display">
+                <thead>
+                    <tr>
+                        <th>Rollout Order</th>
+                        <th>Store #</th>
+                        <th>Property Name</th>
+                        <th>Location</th>
+                        <th>OMs</th>
+                        <th>Description / Tenant</th>
+                        <th>Status</th>
+                        <th>Date to Market</th>
+                        <th>Listing Cap</th>
+                        <th>Listing Price</th>
+                        <th>Earnest Money</th>
+                        <th>DD Period</th>
+                        <th>Closing Period</th>
+                        <th>Buyer Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be populated here dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sands Investment Group. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            // Example data - this will eventually be dynamic
+            const data = [
+                [1, "7972", "Kwik Kar - Jefferson City (Truman)", "Jefferson City, MO", "OM - Truman", "Oil Changers/Wash Shop", "Off-Market", "2024-12-05", "0.065", "$1,810,261.54", "$50,000", "30 days", "30 days", "Clover 2 LLC"],
+                [2, "7973", "Kwik Kar - Edgewood", "Jefferson City, MO", "OM - Edgewood", "Oil Changers/Wash Shop", "On-Market", "2024-11-01", "0.070", "$2,000,000.00", "$60,000", "30 days", "45 days", "Clover 3 LLC"]
+            ];
+
+            $('#dealDashboard').DataTable({
+                data: data,
+                columns: [
+                    { title: "Rollout Order" },
+                    { title: "Store #" },
+                    { title: "Property Name" },
+                    { title: "Location" },
+                    { title: "OMs" },
+                    { title: "Description / Tenant" },
+                    { title: "Status" },
+                    { title: "Date to Market" },
+                    { title: "Listing Cap" },
+                    { title: "Listing Price" },
+                    { title: "Earnest Money" },
+                    { title: "DD Period" },
+                    { title: "Closing Period" },
+                    { title: "Buyer Name" }
+                ],
+                paging: true,
+                searching: true,
+                ordering: true
+            });
+        });
+    </script>
 </body>
+</html>
+
 </html>
