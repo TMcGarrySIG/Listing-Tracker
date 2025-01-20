@@ -92,6 +92,8 @@
                         <th>DD Period</th>
                         <th>Closing Period</th>
                         <th>Buyer Name</th>
+                        <th>Entity</th>
+                        <th>Details</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -111,12 +113,12 @@
     <script>
         $(document).ready(function() {
             let data = [
-                [1, "7972", "Kwik Kar - Jefferson City (Truman)", "Jefferson City, MO", "OM - Truman", "Oil Changers/Wash Shop", "Off-Market", "2024-12-05", "0.065", "$1,810,261.54", "$50,000", "30 days", "30 days", "Clover 2 LLC"],
-                [2, "7973", "Kwik Kar - Edgewood", "Jefferson City, MO", "OM - Edgewood", "Oil Changers/Wash Shop", "On-Market", "2024-11-01", "0.070", "$2,000,000.00", "$60,000", "30 days", "45 days", "Clover 3 LLC"]
+                [1, "7972", "Kwik Kar - Jefferson City (Truman)", "Jefferson City, MO", "OM - Truman", "Oil Changers/Wash Shop", "Off-Market", "2024-12-05", "0.065", "$1,810,261.54", "$50,000", "30 days", "30 days", "Clover 2 LLC", "Entity 1", '<a href="details.html?id=7972" target="_blank">View Details</a>', '<button class="deleteRow">Delete</button>'],
+                [2, "7973", "Kwik Kar - Edgewood", "Jefferson City, MO", "OM - Edgewood", "Oil Changers/Wash Shop", "On-Market", "2024-11-01", "0.070", "$2,000,000.00", "$60,000", "30 days", "45 days", "Clover 3 LLC", "Entity 2", '<a href="details.html?id=7973" target="_blank">View Details</a>', '<button class="deleteRow">Delete</button>']
             ];
 
             const table = $('#dealDashboard').DataTable({
-                data: data.map(row => [...row, '<button class="deleteRow">Delete</button>']),
+                data: data,
                 columns: [
                     { title: "Rollout Order" },
                     { title: "Store #" },
@@ -132,6 +134,8 @@
                     { title: "DD Period" },
                     { title: "Closing Period" },
                     { title: "Buyer Name" },
+                    { title: "Entity" },
+                    { title: "Details", orderable: false },
                     { title: "Actions", orderable: false }
                 ],
                 paging: true,
@@ -141,8 +145,8 @@
 
             // Add row functionality
             $('#addRow').on('click', function() {
-                const newRow = Array(14).fill('');
-                newRow.push('<button class="deleteRow">Delete</button>');
+                const newRow = Array(16).fill('');
+                newRow[15] = '<button class="deleteRow">Delete</button>';
                 table.row.add(newRow).draw(false);
             });
 
