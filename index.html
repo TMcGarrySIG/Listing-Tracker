@@ -46,6 +46,20 @@
             color: white;
             margin-top: 20px;
         }
+        .controls {
+            margin-bottom: 10px;
+        }
+        .controls button {
+            margin-right: 10px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .controls button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -57,6 +71,10 @@
 
     <main>
         <div class="container">
+            <div class="controls">
+                <button id="addRow">Add Row</button>
+                <button id="saveChanges">Save Changes</button>
+            </div>
             <table id="dealDashboard" class="display">
                 <thead>
                     <tr>
@@ -74,6 +92,7 @@
                         <th>DD Period</th>
                         <th>Closing Period</th>
                         <th>Buyer Name</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -91,14 +110,13 @@
 
     <script>
         $(document).ready(function() {
-            // Example data - this will eventually be dynamic
-            const data = [
+            let data = [
                 [1, "7972", "Kwik Kar - Jefferson City (Truman)", "Jefferson City, MO", "OM - Truman", "Oil Changers/Wash Shop", "Off-Market", "2024-12-05", "0.065", "$1,810,261.54", "$50,000", "30 days", "30 days", "Clover 2 LLC"],
                 [2, "7973", "Kwik Kar - Edgewood", "Jefferson City, MO", "OM - Edgewood", "Oil Changers/Wash Shop", "On-Market", "2024-11-01", "0.070", "$2,000,000.00", "$60,000", "30 days", "45 days", "Clover 3 LLC"]
             ];
 
-            $('#dealDashboard').DataTable({
-                data: data,
+            const table = $('#dealDashboard').DataTable({
+                data: data.map(row => [...row, '<button class="deleteRow">Delete</button>']),
                 columns: [
                     { title: "Rollout Order" },
                     { title: "Store #" },
@@ -113,15 +131,33 @@
                     { title: "Earnest Money" },
                     { title: "DD Period" },
                     { title: "Closing Period" },
-                    { title: "Buyer Name" }
+                    { title: "Buyer Name" },
+                    { title: "Actions", orderable: false }
                 ],
                 paging: true,
                 searching: true,
                 ordering: true
             });
+
+            // Add row functionality
+            $('#addRow').on('click', function() {
+                const newRow = Array(14).fill('');
+                newRow.push('<button class="deleteRow">Delete</button>');
+                table.row.add(newRow).draw(false);
+            });
+
+            // Delete row functionality
+            $('#dealDashboard tbody').on('click', '.deleteRow', function() {
+                table.row($(this).parents('tr')).remove().draw();
+            });
+
+            // Save changes functionality
+            $('#saveChanges').on('click', function() {
+                const updatedData = table.rows().data().toArray();
+                console.log("Saved Data:", updatedData);
+                alert("Changes saved locally. Future versions can integrate with a backend.");
+            });
         });
     </script>
 </body>
-</html>
-
 </html>
